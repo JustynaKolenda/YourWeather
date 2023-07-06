@@ -11,6 +11,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { StackNav } from './src/shered/StackNav';
 
 function App() {
+  if(__DEV__) {
+    import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
+  }
   
   return (
     <NavigationContainer>
