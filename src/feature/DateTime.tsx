@@ -3,23 +3,29 @@ import {View, Text, StyleSheet} from 'react-native';
 import moment from 'moment-timezone'
 import {WeatherItem} from './WeatherItem'
 
-export const DateTime = ({current, timezone,time, date}) => {
+type DateTimeProps = {
+    current: {
+        sunrise: number;
+        sunset: number;
+        pressure: number;
+        humidity: number;
+        wind_speed: number;
+    },
+    timezone: string
+}
+
+export const DateTime = ({current, timezone}:DateTimeProps) => {
     return (
         <View style={styles.container}>  
            <View>
-               <View>
-                   <Text style={styles.heading}>{time}</Text>
-               </View>
-               <View>
-                   <Text style={styles.subheading}>{date}</Text>
-               </View>
                <View style={styles.wraper}>
                 <Text style={styles.timezone}>{timezone}</Text>
                 <View style={styles.weatherItemContainer}>
-                        <WeatherItem title="Humidity" value={current? current.humidity : ""} unit="%"/>
+                        <WeatherItem icon={'humidity'} title="Humidity" value={current? current.humidity : ""} unit="%"/>
+                        <WeatherItem icon={'sunrise'} title="Sunrise" value={current? moment.tz(current.sunrise * 1000, timezone ).format('HH:mm'): ""} unit="am"/>
+                        <WeatherItem icon={'sunset'} title="Sunset" value={current? moment.tz(current.sunset * 1000, timezone ).format('HH:mm') : ""} unit="pm"/>
+                        <WeatherItem icon={'wind'} title="Wind" value={current? current.wind_speed : ""} unit="km/h"/>
                         <WeatherItem title="Pressure" value={current? current.pressure : ""} unit="hPA"/>
-                        <WeatherItem title="Sunrise" value={current? moment.tz(current.sunrise * 1000, timezone ).format('HH:mm'): ""} unit="am"/>
-                        <WeatherItem title="Sunset" value={current? moment.tz(current.sunset * 1000, timezone ).format('HH:mm') : ""} unit="pm"/>
                 </View>
                </View>
            </View>
@@ -32,8 +38,9 @@ const styles = StyleSheet.create({
     container: {
         flex:1.5,
         flexDirection:"row",
-        justifyContent:'space-between',
-        padding: 15
+        justifyContent:'center',
+        padding: 15,
+        
     },
     heading: {
         fontSize: 45,
@@ -50,8 +57,9 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     timezone: {
-        fontSize: 20,
-        color:'white'
+        fontSize: 30,
+        color:'white',
+        fontWeight: '100'
     },
     latlong:{
         fontSize:16,
@@ -62,7 +70,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#18181b99",
         borderRadius: 10,
         padding: 10,
-        marginTop: 10
+        width:'100%'
     }, 
     weatherItem: {
         flexDirection: 'row',
@@ -74,7 +82,8 @@ const styles = StyleSheet.create({
         fontWeight: '100'
     },
     wraper: {
-        justifyContent:'center',
-        textAlign:'center'
+       paddingTop:30,
+       justifyContent:'center',
+       alignItems:'center',
     }
 })

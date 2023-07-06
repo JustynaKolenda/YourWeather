@@ -2,7 +2,18 @@ import React from 'react'
 import {View, Image, Text, StyleSheet} from 'react-native'
 import moment from 'moment-timezone'
 
-export const CurrentWeather = ({data}) => {
+type CurrentWeatherProps = {
+    data: {
+        weather: Array<any>,
+        dt: any,
+        temp: {
+            night: number,
+            day: number
+        }
+    }
+}
+
+export const CurrentWeather = ({data}: CurrentWeatherProps) => {
     if(data && data.weather){
         const img = {uri: 'http://openweathermap.org/img/wn/'+ data.weather[0].icon +'@4x.png'}
         return(
@@ -17,11 +28,8 @@ export const CurrentWeather = ({data}) => {
         )
     }else{
         return( 
-            <View>
-            </View>
-
+            <></>
         )
-        
     }
 }
 
