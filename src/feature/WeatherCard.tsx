@@ -9,6 +9,7 @@ import { DateTime } from './DateTime';
 import { calcutateTime, calculateDate, API_KEY } from '../shered/utils';
 import { dataWeather } from '../../response';
 import { useInterval } from '../shered/useInterval';
+import { SearchCity } from './SearchCity';
 
 type dataP = {
     current: {
@@ -63,6 +64,7 @@ export const WeatherCard = () => {
   return (
     <View style={styles.container}>
         <ImageBackground source={{uri:'night'}} resizeMode="cover" style={styles.image}>
+                <SearchCity />
                <View>
                    <Text style={styles.subheading}>{date}</Text>
                </View>

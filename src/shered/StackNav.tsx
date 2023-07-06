@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 export const StackNav = () =>{
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Home" component={WeatherCard} />
+            <Stack.Screen  options={{headerShown: false}} name="Home" component={WeatherCard} />
         </Stack.Navigator>
     )
 }
