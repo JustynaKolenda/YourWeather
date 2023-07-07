@@ -1,23 +1,30 @@
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { TextInput, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native'
+import { TextInput, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import { useStore } from '../shered/store';
 
 
 export const SearchCity = () =>{
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
-          city: '',
+            name: '',
         }
     });
 
-    const findCity = () =>{
-        return 
+    const [getWeatherForCity] = useStore(
+        (state) => [ state.getWeatherForCity],
+      )
+
+    const findCity = (data:{name:string}) =>{
+        getWeatherForCity(data.name)
     }
+    
     return (
         <View style={styles.box}>
             <Controller
                 control={control}
                 rules={{ required: true,}}
+                name={'name'}
                 render={({ field: { onChange, onBlur, value } }) => (
                     <TextInput
                         style={styles.input}
@@ -27,9 +34,8 @@ export const SearchCity = () =>{
                         value={value}
                     />
                 )}
-                name={'city'}
             />
-        {errors.city && <Text style={styles.error}>City not found</Text>}
+        {errors.name && <Text style={styles.error}>City not found</Text>}
         <View style={styles.boxButton}>
             <TouchableOpacity style={styles.button} onPress={handleSubmit(findCity)}>
                 <Text style={styles.buttonTilte}>Search</Text>

@@ -194,3 +194,31 @@ export const dataWeather =
                             "temp":{"day":31.84,"min":24.07,"max":31.84,"night":26,"eve":27.06,"morn":25.75},
                             "feels_like":{"day":32.05,"night":26,"eve":28.31,"morn":25.9},
                             "pressure":1015,"humidity":40,"dew_point":15.84,"wind_speed":5.93,"wind_deg":164,"wind_gust":7.43,"weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],"clouds":1,"pop":0,"uvi":2},{"dt":1689267600,"sunrise":1689240947,"sunset":1689294437,"moonrise":1689227760,"moonset":1689283320,"moon_phase":0.87,"summary":"Expect a day of partly cloudy with rain","temp":{"day":30.98,"min":24.17,"max":30.98,"night":24.59,"eve":25.43,"morn":26.02},"feels_like":{"day":32.39,"night":25.32,"eve":26.12,"morn":26.02},"pressure":1014,"humidity":49,"dew_point":18.61,"wind_speed":6.15,"wind_deg":167,"wind_gust":10.89,"weather":[{"id":501,"main":"Rain","description":"moderate rain","icon":"10d"}],"clouds":21,"pop":0.99,"rain":12.99,"uvi":2}]}
+
+
+
+
+export const serchedCity =
+    {"coord":
+        {"lon":-0.1257,"lat":51.5085},
+        "weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04n"}],
+        "base":"stations",
+        "main":{"temp":290.1,"feels_like":289.42,"temp_min":288.1,"temp_max":291.56,"pressure":1014,"humidity":60},
+        "visibility":10000,
+        "wind":{"speed":2.68,"deg":160,"gust":4.02},
+        "clouds":{"all":98},
+        "dt":1688676841,
+        "sys":{"type":2,"id":2075535,"country":"GB","sunrise":1688615462,"sunset":1688674737},
+        "timezone":3600,
+        "id":2643743,
+        "name":"London",
+        "cod":200
+    }
+
+
+const test = 
+    {"base": "stations", "clouds": {"all": 0}, "cod": 200, "coord": {"lat": 51.5085, "lon": -0.1257}, "dt": 1688739009, "id": 2643743, "main": {"feels_like": 301.35, "humidity": 36, "pressure": 1014, "temp": 302.07, "temp_max": 303.63, "temp_min": 299.94}, "name": "London", "sys": {"country": "GB", "id": 2075535, "sunrise": 1688701915, "sunset": 1688761103, "type": 2}, "timezone": 3600, "visibility": 10000, "weather": [{"description": "clear sky", "icon": "01d", "id": 800, "main": "Clear"}], "wind": {"deg": 160, "speed": 5.14}
+}
+
+
+//  {"lat": 51.5085, "lon": -0.1257}

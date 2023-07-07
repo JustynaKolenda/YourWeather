@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     weatherItemContainer: {
         backgroundColor: "#18181b99",
         borderRadius: 10,
-        padding: 10,
         width:'100%'
     }, 
     weatherItem: {
