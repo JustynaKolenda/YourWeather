@@ -1,8 +1,8 @@
 
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, Text, ImageBackground} from 'react-native';
-import { WeatherElements } from './WeatherElements';
-import { DateTime } from './DateTime';
+import { WeatherElements } from './weather/WeatherElements';
+import { DateTime } from './basicInfo/DateTime';
 import { calculateDate, } from '../shered/utils';
 import { useInterval } from '../shered/useInterval';
 import { SearchCity } from './SearchCity';

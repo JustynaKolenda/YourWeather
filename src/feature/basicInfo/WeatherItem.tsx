@@ -31,14 +31,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '100',
         flex:0.4,
-        paddingTop:5,
         paddingRight:5
     },
     icon: {
         width:20,
         height:20,
         marginRight:10,
-        paddingTop:5,
         paddingRight:5
     }
 })
