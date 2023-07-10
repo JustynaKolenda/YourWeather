@@ -26,18 +26,21 @@ const styles = StyleSheet.create({
         borderRadius:10,
         borderColor:"#eee",
         borderWidth:1,
-        padding: 20,
-        marginLeft: 10
+        paddingLeft: 20,
+        paddingRight:20,
+        marginLeft: 10,
+        paddingBottom:0,
+        paddingTop:10
     }, 
     day: {
         fontSize: 20,
         color:"white",
         backgroundColor: "#3c3c44",
-        padding: 10,
+        paddingTop: 5,
+        paddingBottom:5,
         textAlign:"center",
         borderRadius: 50,
         fontWeight: "200",
-        marginBottom: 15
     },   
     temp: {
         fontSize: 14,

@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { TextInput, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import { useStore } from '../shered/store';
+import { GeoLocation } from './GeoLocation';
+import { requestLocationPermission } from '../shered/api';
+import Geolocation, { GeoCoordinates } from 'react-native-geolocation-service';
 
 
 export const SearchCity = () =>{
+    const [location, setLocation] = useState(false);
+    const [getWeatherByCoordynation] = useStore(
+        (state) => [ state.getWeatherByCoordynation],
+      )
+
+    
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             name: '',
@@ -18,7 +27,29 @@ export const SearchCity = () =>{
     const findCity = (data:{name:string}) =>{
         getWeatherForCity(data.name)
     }
-    
+
+ 
+    const getLocation = () => {
+        const result = requestLocationPermission();
+        result.then(res => {
+          if (res) {
+            Geolocation.getCurrentPosition(
+              position => {
+                const lat = position.coords.latitude
+                const lon = position.coords.longitude
+                const coords = {lat, lon}
+                getWeatherByCoordynation(coords)
+                setLocation(true);
+            },
+              error => {
+                console.log(error.code, error.message);
+                setLocation(false);
+              },
+            );
+          }
+        });
+    }
+
     return (
         <View style={styles.box}>
             <Controller
@@ -40,6 +71,7 @@ export const SearchCity = () =>{
             <TouchableOpacity style={styles.button} onPress={handleSubmit(findCity)}>
                 <Text style={styles.buttonTilte}>Search</Text>
             </TouchableOpacity>
+            <GeoLocation />
         </View>
       </View>
     )

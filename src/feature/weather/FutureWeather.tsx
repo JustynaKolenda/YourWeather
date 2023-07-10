@@ -4,7 +4,7 @@ import { FutureWeatherItem } from './FutureWeatherItem'
 
 export const FutureWeather = ({data}) => {
     return (
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row',}}>
             {
                 data && data.length > 0 ? 
                 data.map((data: any, idx: React.Key | null | undefined) => (

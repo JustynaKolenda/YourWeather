@@ -10,6 +10,7 @@ type State = {
   
   type Action = {
     getWeatherForCity: ( city: string) => void,
+    getWeatherByCoordynation: (coord: {}) => void,
     getWather: ()=> void
   }
   
@@ -24,6 +25,10 @@ type State = {
         set({coord: coordianteForCity})
         get().getWather()
     },
+    getWeatherByCoordynation: async (coord) => {
+      const coordianteForYourGeo = await getWeatherByCoord(coord)
+      set({weather: coordianteForYourGeo})
+  },
     getWather: async () => {
         const coord = get().coord
         const newWeather = await getWeatherByCoord(coord)
